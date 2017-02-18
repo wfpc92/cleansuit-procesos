@@ -7,17 +7,30 @@ var PrendaFactory = function(RecursosFactory,
 	return {
 		productos : $localStorage.productos,
 
-		//carga una lista de productos desde el servidor
+		//buscar la informacion de la prenda
 		buscarPrenda: function(codigo) {
 			return RecursosFactory
 			.get('/prendas/codigo/' + codigo, {})
 			.then(function(respuesta) {
-				$log.debug("PrendaFactory.cargar()", respuesta);
+				$log.debug("PrendaFactory.buscarPrenda()", respuesta);
 				if(respuesta){
 					_prenda = respuesta.data.prenda;
 					return _prenda;
 				}
 			});
+		},
+
+		//enviar novedad de la prenda
+		enviarNovedad:function(prenda, novedad) {
+			console.log(prenda, novedad);
+			return RecursosFactory
+			.post('/prendas/novedad', {})
+			.then(function(respuesta) {
+				$log.debug("PrendaFactory.enviarNovedad()", respuesta);
+				if(respuesta){
+					
+				}
+			});	
 		}
 	};
 };
