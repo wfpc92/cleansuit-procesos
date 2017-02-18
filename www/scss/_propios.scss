@@ -2033,10 +2033,15 @@ html input[disabled] {
 	form {
 		background-color: #FFFFFF;
 		padding-bottom: 15px;
+		.cont-lista {
+			background-color: #F8F8F8;
+		}
 		.listProcesos {
 			background-color: #F8F8F8;
 			padding: 18px 0 18px;
-			label { display: none;}
+			width: 310px;
+			margin: 0 auto;
+			label { display: none;}			
 			select {
 				border: 1px solid #52B1ED;
 				border-radius: 10px; 
@@ -2053,7 +2058,7 @@ html input[disabled] {
 				white-space: normal;
 				margin: 0 auto;
 				padding-left: 10px;
-			}
+			}			
 			.item-icon-right .icon {
 				right: 21px;
 			}
