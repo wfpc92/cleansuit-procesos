@@ -7,10 +7,6 @@
 				<ion-item class="row listProcesos">
 					<div class="col item-icon-right">
 						<select ng-options="p as p.nombre for p in procesos track by p._id" ng-model="proceso" required ></select>
-
-						<i class="icon ico-flechaabajo"></i>
-
-
 						<i class="icon ico-flechaabajo"></i>
 					</div>
 				</ion-item>
@@ -36,12 +32,16 @@
 					</div>
 				</ion-item>
 
-				<ion-item class="row textarea" ng-if="prenda">
+				
+				<ion-item class="row" ng-if="prenda">
 					<div class="col">
-						<ion-radio ng-repeat="item in motivos" ng-value="item.valor" ng-model="motivo.valor">
+						<ion-radio ng-repeat="item in radioNovedades" ng-value="item.valor" ng-model="novedad.hayNovedad">
 							{{ item.texto }}
 						</ion-radio>
 					</div>
+				</ion-item>
+				
+				<ion-item class="row textarea" ng-if="prenda">
 					<div class="col">
 						<textarea placeholder="Observaciones" ng-model="novedad.observaciones" ng-minlength="0" ng-maxlength="100"></textarea>
 					</div>

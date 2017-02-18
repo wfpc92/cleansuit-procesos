@@ -23,6 +23,11 @@ var PanelCtrl = function($scope,
 		{_id:"4", nombre: "Proceso 4"},
 	];
 
+	$scope.radioNovedades = [
+		{ valor: true, texto:  "Sin novedad" },
+		{ valor: false, texto:  "Con novedad" }
+	];
+
 	$scope.novedad = {};
 
 	$scope.$watch("novedad.proceso",function(o, n) {
