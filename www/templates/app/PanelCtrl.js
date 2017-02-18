@@ -107,6 +107,7 @@ var PanelCtrl = function($scope,
 		} else {
 			src = API_ENDPOINT.url
 		}
+		src= "http://api.cleansuit.co";
 		return src += "/updates/"+ $scope.prenda.fotos[0].nombre;
 	};
 };
