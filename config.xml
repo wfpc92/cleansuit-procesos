@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="co.cleansuit.procesos" version="0.0.30" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>CleanSuit Procesos</name>
-  <description>
-    Aplicación para operarios de CleanSuit. Permite gestion de procesos de prendas.
+  <description>&#xD;
+    Aplicación para operarios de CleanSuit. Permite gestion de procesos de prendas.&#xD;
   </description>
-  <author email="info@cautiva.co" href="http://cautiva.co">
-      Cautiva
+  <author email="info@cautiva.co" href="http://cautiva.co">&#xD;
+      Cautiva&#xD;
   </author>
   <content src="index.html"/>
   <access origin="*"/>
