@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="co.cleansuit.domiciliarios" version="0.0.27" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>CleanSuit Domiciliarios</name>
+<widget id="co.cleansuit.procesos" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>CleanSuit Procesos</name>
   <description>
-    Aplicación para domiciliarios de CleanSuit. Permite gestion de domicilios de entrega y recoleccion de prendas y venta directa de productos.
+    Aplicación para operarios de CleanSuit. Permite gestion de procesos de prendas.
   </description>
   <author email="info@cautiva.co" href="http://cautiva.co">
       Cautiva

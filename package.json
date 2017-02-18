@@ -1,7 +1,7 @@
 {
-  "name": "cleansuit-domiciliarios",
+  "name": "cleansuit-procesos",
   "version": "1.1.1",
-  "description": "Aplicación Domiciliarios para Cleansuit",
+  "description": "Aplicación Procesos para Cleansuit",
   "dependencies": {
     "cordova-auto-patch": "^1.2.2",
     "gulp": "^3.5.6",
