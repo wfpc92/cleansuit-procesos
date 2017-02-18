@@ -7,6 +7,12 @@ var PanelCtrl = function($scope,
 	$log.debug("PanelCtrl", $scope.$id);
 	var self = this;
 
+	$scope.prenda = {};
+
+	$scope.buscarPrenda = function() {
+		
+	};
+
 };
 
 app.controller('PanelCtrl', PanelCtrl);

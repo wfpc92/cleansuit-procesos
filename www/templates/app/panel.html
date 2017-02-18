@@ -31,9 +31,9 @@
 					<div class="col item-icon-right">
 						<label class="item-input item-stacked-label item-floating-label">
 							<span class="input-label item-icon-right">Código de identificación de la prenda</span>
-							<input type="text" placeholder="Ingrese un código" ng-model="prenda.codigo" ng-minlength="3" ng-maxlength="100" ng-disabled="!esNueva" required>
+							<input type="text" placeholder="Ingrese un código" ng-model="prenda.codigo" ng-minlength="3" ng-maxlength="100" ng-model-options="{ debounce: 1000 }" ng-change="buscarPrenda()" required>
 						</label>
-						<i class="icon icons-activar_cam" ng-click="escanearCodigo()" ng-hide="!esNueva"></i>
+						<i class="icon icons-activar_cam" ng-click="escanearCodigo()"></i>
 					</div>
 				</ion-item>
 
