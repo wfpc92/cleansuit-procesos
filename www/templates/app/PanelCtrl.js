@@ -1,6 +1,7 @@
 var PanelCtrl = function($scope, 
 						PrendaFactory,
 						FotosFactory,
+						$ionicPopup,
 						$state, 
 						$log,
 						$ionicHistory) {
@@ -8,7 +9,10 @@ var PanelCtrl = function($scope,
 	$log.debug("PanelCtrl", $scope.$id);
 	var self = this;
 
-	$scope.codigo = "";
+	$scope.formulario = {
+		codigo: null
+	};
+
 	$scope.prenda = null;
 
 	$scope.procesos = [
@@ -18,10 +22,15 @@ var PanelCtrl = function($scope,
 		{_id:"4", nombre: "Proceso 4"},
 	];
 
+	$scope.novedad = {};
+
 	$scope.buscarPrenda = function() {
+		$scope.prenda = null;
+		
 		PrendaFactory
-		.buscarPrenda($scope.codigo)
+		.buscarPrenda($scope.formulario.codigo)
 		.then(function(prenda) {
+			console.log(prenda)
 			if (prenda) {
 				$scope.prenda = prenda;
 			}
@@ -38,7 +47,7 @@ var PanelCtrl = function($scope,
                 "Cancelled: " + codigo.cancelled);
 			if(codigo && !codigo.cancelled) {
 				$log.debug("FormularioServicioCtrl: termina escaneo de codigo.", codigo.text);
-				$scope.codigo = codigo.text;
+				$scope.formulario.codigo = codigo.text;
 				$scope.buscarPrenda();
 			}
 		}, function(err) {

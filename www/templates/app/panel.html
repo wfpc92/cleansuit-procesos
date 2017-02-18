@@ -22,7 +22,7 @@
 					<div class="col item-icon-right">
 						<label class="item-input item-stacked-label item-floating-label">
 							<span class="input-label item-icon-right">Código de identificación de la prenda</span>
-							<input type="text" placeholder="Ingrese un código" ng-model="codigo" ng-minlength="3" ng-maxlength="100" ng-model-options="{ debounce: 1000 }" ng-change="buscarPrenda()" required>
+							<input type="text" placeholder="Ingrese un código" ng-model="formulario.codigo" ng-minlength="3" ng-maxlength="100" ng-model-options="{ debounce: 1000 }" ng-change="buscarPrenda()" required>
 						</label>
 						<i class="icon icons-activar_cam" ng-click="escanearCodigo()"></i>
 
@@ -30,10 +30,10 @@
 							<div class="imagen">
 								<img ng-src="../img/promociones/promo1.jpg">
 							</div>
-							<h3>Pantalón de cuero</h3>
-							<p>ID: 23889</p>
-							<p>Lavado en seco - Planchado</p>
-							<p>Orden # 2309</p>
+							<h3>{{prenda.subservicio.nombre}}</h3>
+							<p>ID: {{prenda.codigo}}</p>
+							<p>{{prenda.subservicio._creator.nombre}}</p>
+							<p>Orden # {{prenda.orden.codigo | numberFixedLen:4}}</p>
 						</div>
 
 					</div>
@@ -43,34 +43,34 @@
 					<div class="col">
 						<label class="item-input item-stacked-label item-floating-label">
 							<span class="input-label item-icon-right">Reportar novedad</span>
-							<textarea placeholder="Reportar novedad" ng-model="prenda.comentario" ng-minlength="0" ng-maxlength="100"></textarea>
+							<textarea placeholder="Observaciones" ng-model="novedad.observaciones" ng-minlength="0" ng-maxlength="100"></textarea>
 						</label>
 					</div>
 				</ion-item>
 
 			</ion-list>
 			
-			<a ng-click="siguiente()" class="button button-positive button-full" ng-if="prenda">
+			<a ng-click="enviarNovedad()" class="button button-positive button-full" ng-if="prenda">
 				Enviar
 			</a>
 		</form>
 
 		<div class="historial-prenda" ng-if="prenda">
 			<h3>Historial de prenda</h3>
+			
+			<div clas="card" ng-if="prenda.novedades.length == 0">
+				<div class="item item-text-wrap">
+					No hay Novedades
+				</div>
+			</div>
+
 			<ul class="listProcesos">
-				<li class="afirmativo">
-					<h2>Proceso 1</h2>
-					<h3>Pantalón cuero</h3>
-					<span>ID: 23889</span>
+				<li ng-repeat="novedad in prenda.novedades" ng-class="{'afirmativo': novedad.hayNovedad,  'negativo': !novedad.hayNovedad}">
+					<h2>{{novedad.proceso.nombre}}</h2>
+					<span>Fecha: {{novedad.fecha | date : "hh:mm, dd 'de' MMMM 'de' yyyy"}}</span>
 					<div class="estado"><span class="icon iconoafirmativo"></span></div>
-				</li>
-				<li class="negativo">
-					<h2>Proceso 1</h2>
-					<h3>Pantalón cuero</h3>
-					<span>ID: 23889</span>
-					<div class="estado"><span class="icon icononegativo"></span></div>
 					<p class="novedad">
-						Prenda presenta mancha ocasionada por detergente, se recomienda volver a proceso 1
+						novedad.observaciones
 					</p>
 				</li>
 			</ul>
