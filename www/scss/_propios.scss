@@ -2056,11 +2056,12 @@ html input[disabled] {
 				opacity: 1.0 !important;
 				font-family: 'fira_sansmedium';
 				-webkit-appearance: none;
-				padding-right: 45px;
+				/*padding-right: 45px;*/
 				background-color: #FFFFFF;
 				white-space: normal;
 				margin: 0 auto;
-				padding-left: 10px;
+				/*padding-left: 10px;*/
+				text-align-last: center;
 			}			
 			.item-icon-right .icon {
 				right: 21px;
