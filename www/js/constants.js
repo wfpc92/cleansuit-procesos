@@ -22,6 +22,6 @@ app
 })
 
 .constant('API_ENDPOINT', {
-	//url: '/api'
-	url: 'http://api.cleansuit.co'
+	url: '/api'
+	//url: 'http://api.cleansuit.co'
 });

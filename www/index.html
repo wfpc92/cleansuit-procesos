@@ -62,8 +62,8 @@
 
 		<!--Controllers de la aplicacion. -->
 		<script src="templates/AppCtrl.js"></script>
-
 		<script src="templates/autenticacion/IngresarCtrl.js"></script>
+		<script src="templates/app/PanelCtrl.js"></script>
 
 		<script src="templates/app/orden/recoleccion/OrdenesEnRecoleccionCtrl.js"></script>
 		<script src="templates/app/orden/recoleccion/OrdenEnRecoleccionCtrl.js"></script>
@@ -123,9 +123,9 @@
 
 	</head>
 
-	<body ng-app="ClienteCleanSuit" ng-controller="AppCtrl">
+	<body ng-app="ProcesosCleanSuit" ng-controller="AppCtrl">
 		<!-- $state.go("autenticacion");-->
 		<ion-nav-view></ion-nav-view>
-		<fab-menu ng-if="$state.current.name == 'app.recoleccion-carrito'"></fab-menu>
+		<fab-menu ng-if="$state.current.name == 'app.panel'"></fab-menu>
 	</body>
 </html>

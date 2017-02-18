@@ -114,6 +114,16 @@ app.config(function($stateProvider,
 	})
 
 	// vista principal por defecto mostrar ordenes pendientes de recoleccion.
+	.state('app.panel', {
+		url: '/panel',
+		views: {
+			'contenedor-panel': {
+				templateUrl: 'templates/app/panel.html',
+				controller: 'PanelCtrl'
+			}
+		}
+	})
+
 	.state('app.recoleccion', {
 		url: '/recoleccion',
 		views: {

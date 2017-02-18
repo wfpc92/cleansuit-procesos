@@ -60,7 +60,7 @@ var AppCtrl = function($scope,
 		.finally(function() {
 			$log.debug("Carga inicial finalizada.");
 		});
-		$state.go('app.recoleccion');
+		$state.go('app.panel');
 	});
 
 
