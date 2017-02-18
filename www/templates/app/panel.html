@@ -1,44 +1,10 @@
 <ion-view title="Cleansuit">
-	<ion-content class="pdBoton orden serviadd">
+	<ion-content class="orden procesos">
 
-		<div class="titulo">
-			ORDEN # {{carrito.infoOrden.codigo | numberFixedLen:4}}
-		</div>
-
-		<form name="formServicio" class="prenda">
-			<div class="subtitulo">
-				-AGREGAR PRENDA-
-			</div>
-			<ion-list>
-				<ion-item class="row fotos">
-					<div class="col fotos">
-						<h3>Fotos de la prenda</h3>
-						<ul class="listfotos">
-							<li ng-repeat="foto in prenda.fotos track by $index" ng-click="eliminarFoto($index)">
-								<img ng-src="{{foto.src}}" alt="">
-								<i class="icon icons icons-eliminar_foto" ></i>
-							</li>
-							<li ng-click="tomarFoto()">
-								<i class="icon icons icons-subir_foto"></i>
-							</li>
-						</ul>
-					</div>
-				</ion-item>
-			</ion-list>
+		<form name="formServicio" class="">
 
 			<ion-list>
-				<ion-item class="row">
-					<div class="col item-icon-right">
-						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right">Código de identificación de la prenda</span>
-							<input type="text" placeholder="Ingrese un código" ng-model="prenda.codigo" ng-minlength="3" ng-maxlength="100" ng-disabled="!esNueva" required>
-						</label>
-						<i class="icon icons-activar_cam" ng-click="escanearCodigo()" ng-hide="!esNueva"></i>
-					</div>
-				</ion-item>
-
-				<h3>Características de la prenda</h3>
-				<ion-item class="row">
+				<ion-item class="row listProcesos">
 					<div class="col item-icon-right">
 						<label class="item-input item-stacked-label item-floating-label">
 							<span class="input-label item-icon-right tipServicio">Tipo de servicio</span>
@@ -48,76 +14,38 @@
 					</div>
 				</ion-item>
 
-				<ion-item class="row">
+				<ion-item class="row contenedor">
 					<div class="col item-icon-right">
 						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right categoria">Categoría</span>
+							<span class="input-label item-icon-right">Código de identificación de la prenda</span>
+							<input type="text" placeholder="Ingrese un código" ng-model="prenda.codigo" ng-minlength="3" ng-maxlength="100" ng-disabled="!esNueva" required>
 						</label>
-						<select ng-options="s as s.nombre for s in prenda.servicio.subservicios track by s._id" ng-model="prenda.subservicio" required></select>
-						
-						<i class="icon ico-flechaabajo"></i>
-					</div>
-				</ion-item>
+						<i class="icon icons-activar_cam" ng-click="escanearCodigo()" ng-hide="!esNueva"></i>
 
-				<ion-item class="row" ng-repeat="(_id, adicional) in prenda.subservicio.adicionales" ng-if="adicional.checked">
-					<div class="col">
-						<div class="checkbox">
-							<input type="checkbox" ng-model="prenda.adicionales[_id].checked" ng-checked="prenda.adicionales[_id].checked">
-							<span class="input-label item-icon-right">{{ServiciosFactory.getNombreSubservicio(_id)}}</span>
+						<div class="prenda">
+							<div class="imagen">
+								<img ng-src="../img/promociones/promo1.jpg">
+							</div>
+							<h3>Pantalón de cuero</h3>
+							<p>ID: 23889</p>
+							<p>Lavado en seco - Planchado</p>
+							<p>Orden # 2309</p>
 						</div>
-					</div>
-				</ion-item>
 
-				<ion-item class="row">
-					<div class="col item-icon-right">
-						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right">Marca</span>
-							<input type="text" placeholder="Marca" ng-model="prenda.marca" ng-minlength="1" ng-maxlength="100">
-						</label>
-						<i class="icon ico-flechaabajo"></i>
-					</div>
-				</ion-item>
-
-				<ion-item class="row">
-					<div class="col item-icon-right">
-						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right">Talla</span>
-							<input type="text" placeholder="Talla" ng-model="prenda.talla" ng-minlength="1" ng-maxlength="100">
-						</label>
-						<i class="icon ico-flechaabajo" ng-click="openPopover('HORARECOLECCION', $event)"></i>
-					</div>
-				</ion-item>
-
-				<ion-item class="row">
-					<div class="col item-icon-right">
-						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right">Material</span>
-							<input type="text" placeholder="Material" ng-model="prenda.material" ng-minlength="1" ng-maxlength="100">
-						</label>
-						<i class="icon ico-flechaabajo" ng-click="openPopover('HORARECOLECCION', $event)"></i>
-					</div>
-				</ion-item>
-
-				<ion-item class="row">
-					<div class="col item-icon-right">
-						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right">Prenses</span>
-							<input type="text" placeholder="Prenses" ng-model="prenda.prenses" ng-minlength="1" ng-maxlength="100">
-						</label>
-						<i class="icon ico-flechaabajo" ng-click="openPopover('HORARECOLECCION', $event)"></i>
 					</div>
 				</ion-item>
 
 				<ion-item class="row textarea">
 					<div class="col">
 						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right">Comentario</span>
-							<textarea placeholder="Comentario" ng-model="prenda.comentario" ng-minlength="0" ng-maxlength="100"></textarea>
+							<span class="input-label item-icon-right">Reportar novedad</span>
+							<textarea placeholder="Reportar novedad" ng-model="prenda.comentario" ng-minlength="0" ng-maxlength="100"></textarea>
 						</label>
 					</div>
 				</ion-item>
 
 			</ion-list>
+			<a ng-click="siguiente()" class="button button-positive button-full" ng-disabled="!formulario.valido"><!--{{formulario.siguiente.texto}}--> Enviar</a>
 		</form>
 
 		<div class="historial-prenda">
@@ -125,26 +53,22 @@
 			<ul class="listProcesos">
 				<li class="afirmativo">
 					<h2>Proceso 1</h2>
-					<h3>Pantalon cuero</h3>
+					<h3>Pantalón cuero</h3>
 					<span>ID: 23889</span>
-					<div class="estado"><span></span></div>
+					<div class="estado"><span class="icon iconoafirmativo"></span></div>
 				</li>
 				<li class="negativo">
 					<h2>Proceso 1</h2>
-					<h3>Pantalon cuero</h3>
+					<h3>Pantalón cuero</h3>
 					<span>ID: 23889</span>
-					<div class="estado"><span></span></div>
+					<div class="estado"><span class="icon icononegativo"></span></div>
+					<p class="novedad">
+						Prenda presenta mancha ocasionada por detergente, se recomienda volver a proceso 1
+					</p>
 				</li>
 			</ul>
 		</div>
 
-		<elemento-centrado>
-			<a ng-click="cancelar()" class="cancelar">{{formulario.cancelar.texto}}</a>
-		</elemento-centrado>
 	</ion-content>
-
-	<div class="bar bar-footer">
-		<a ng-click="siguiente()" class="button button-calm button-full" ng-disabled="!formulario.valido">{{formulario.siguiente.texto}}</a>
-	</div>
 
 </ion-view>
