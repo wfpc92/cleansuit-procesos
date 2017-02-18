@@ -23,12 +23,14 @@ var PanelCtrl = function($scope,
 		{_id:"4", nombre: "Proceso 4"},
 	];
 
+
 	$scope.radioNovedades = [
 		{ valor: true, texto:  "Sin novedad" },
 		{ valor: false, texto:  "Con novedad" }
 	];
 
 	$scope.novedad = {};
+
 
 	$scope.$watch("novedad.proceso",function(o, n) {
 		console.log(o,n);
@@ -98,7 +100,8 @@ var PanelCtrl = function($scope,
 		    			PrendaFactory
 						.enviarNovedad($scope.prenda, $scope.novedad)
 						.then(function() {
-							$scope.formulario.codigo = null;
+							
+							limpiarFormulario();
 						});
 		    		}
 		    	}
@@ -106,13 +109,17 @@ var PanelCtrl = function($scope,
 	    });
 	};
 
+	var limpiarFormulario = function() {
+		$scope.formulario.codigo = null;
+		//hayNovedad: $scope.radioNovedades[0].valor
+	}
+
 	$scope.getSrcFoto = function() {
 		if (API_ENDPOINT.url == '/api') {
 			src = "http://localhost:20987";
 		} else {
 			src = API_ENDPOINT.url
 		}
-		src= "http://api.cleansuit.co";
 		return src += "/updates/"+ $scope.prenda.fotos[0].nombre;
 	};
 };
