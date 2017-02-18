@@ -2045,6 +2045,7 @@ html input[disabled] {
 				background-color: #FFFFFF;
 				white-space: normal;
 				margin: 0 auto;
+				padding-left: 10px;
 			}
 			.item-icon-right .icon {
 				right: 21px;
@@ -2075,10 +2076,11 @@ html input[disabled] {
 				top: 29px;
 				right: 35px;
 				height: 32px !important;
-			} 
+			}
+			
 			.prenda {
 				position: relative;
-				padding: 19px 15px 10px 125px;
+				padding: 19px 15px 10px;
 				.imagen {
 					position: absolute;
 					top: 50%;
@@ -2108,6 +2110,9 @@ html input[disabled] {
 					margin-bottom: 1px;
 					line-height: 19px;
 				}
+			}
+			.padding-prenda {
+				padding: 19px 15px 10px 125px;
 			}
 		}
 		.textarea {

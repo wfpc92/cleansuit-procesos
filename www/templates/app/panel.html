@@ -23,7 +23,7 @@
 						</label>
 						<i class="icon icons-activar_cam" ng-click="escanearCodigo()"></i>
 
-						<div class="prenda" ng-if="prenda">
+						<div class="prenda" ng-if="prenda" ng-class="{'padding-prenda': prenda.fotos.length > 0}">
 							<div class="imagen" ng-if="prenda.fotos.length > 0">
 								<img ng-src="{{getSrcFoto(prenda)}}">
 							</div>
