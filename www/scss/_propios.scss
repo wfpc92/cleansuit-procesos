@@ -1138,20 +1138,27 @@ $inputcolor: #000;
 	.radio-content {
 		.item-content {
 			background-color: #FFFFFF !important;
-			padding: 14px 49px 14px 2px;
+			padding: 11px 2px 11px 44px;
+			span{
+				color: #666666;
+				font-size: 15px;
+			}
 		}
 		.radio-icon {
 			border: 2px solid $calm;
 			border-radius: 20px;
 			padding: 0;
-			width: 35px;
-			height: 35px;
+			width: 30px;
+			height: 30px;
 			top: 8px;
+			right: auto;
+			left: 0;
 		}
 		.ion-checkmark:before {
+			position: absolute;
 			content: "";
-			width: 31px;
-			height: 31px;
+			width: 26px;
+			height: 26px;
 			border: 2px solid #FFF;
 			background-color: #44A01A;
 			border-radius: 20px;
@@ -2114,6 +2121,9 @@ html input[disabled] {
 			.padding-prenda {
 				padding: 19px 15px 10px 125px;
 			}
+		}
+		.novedad {
+			padding: 17px 20px 13px;
 		}
 		.textarea {
 			padding: 5px 20px;
