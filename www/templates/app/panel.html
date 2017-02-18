@@ -6,10 +6,7 @@
 			<ion-list>
 				<ion-item class="row listProcesos">
 					<div class="col item-icon-right">
-						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right tipServicio">Tipo de servicio</span>
-						</label>
-						<select ng-options="p as p.nombre for p in procesos track by p._id" ng-model="novedad.proceso" required ></select>
+						<select ng-options="p as p.nombre for p in procesos track by p._id" ng-model="proceso" required ></select>
 
 						<i class="icon ico-flechaabajo"></i>
 
@@ -26,7 +23,7 @@
 						</label>
 						<i class="icon icons-activar_cam" ng-click="escanearCodigo()"></i>
 
-						<div class="prenda" ng-if="prenda">
+						<div class="prenda" ng-if="prenda" ng-class="{'padding-prenda': prenda.fotos.length > 0}">
 							<div class="imagen" ng-if="prenda.fotos.length > 0">
 								<img ng-src="{{getSrcFoto(prenda)}}">
 							</div>
@@ -46,10 +43,7 @@
 						</ion-radio>
 					</div>
 					<div class="col">
-						<label class="item-input item-stacked-label item-floating-label">
-							<span class="input-label item-icon-right">Reportar novedad</span>
-							<textarea placeholder="Observaciones" ng-model="novedad.observaciones" ng-minlength="0" ng-maxlength="100"></textarea>
-						</label>
+						<textarea placeholder="Observaciones" ng-model="novedad.observaciones" ng-minlength="0" ng-maxlength="100"></textarea>
 					</div>
 				</ion-item>
 
