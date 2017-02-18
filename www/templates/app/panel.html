@@ -9,7 +9,7 @@
 						<label class="item-input item-stacked-label item-floating-label">
 							<span class="input-label item-icon-right tipServicio">Tipo de servicio</span>
 						</label>
-						<select ng-options="p as p.nombre for p in procesos track by p._id" ng-model="proceso" required ></select>
+						<select ng-options="p as p.nombre for p in procesos track by p._id" ng-model="novedad.proceso" required ></select>
 
 						<i class="icon ico-flechaabajo"></i>
 
@@ -27,8 +27,8 @@
 						<i class="icon icons-activar_cam" ng-click="escanearCodigo()"></i>
 
 						<div class="prenda" ng-if="prenda">
-							<div class="imagen">
-								<img ng-src="../img/promociones/promo1.jpg">
+							<div class="imagen" ng-if="prenda.fotos.length > 0">
+								<img ng-src="{{getSrcFoto(prenda)}}">
 							</div>
 							<h3>{{prenda.subservicio.nombre}}</h3>
 							<p>ID: {{prenda.codigo}}</p>
@@ -50,7 +50,7 @@
 
 			</ion-list>
 			
-			<a ng-click="enviarNovedad()" class="button button-positive button-full" ng-if="prenda">
+			<a ng-click="enviarNovedad()" class="button button-positive button-full" ng-if="prenda" ng-disabled="!formulario.valido">
 				Enviar
 			</a>
 		</form>
