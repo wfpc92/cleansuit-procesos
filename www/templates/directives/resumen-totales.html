@@ -1,0 +1,18 @@
+<div class="col card totales">
+	<div class="row">
+		<div class="col">Subtotal:</div>
+		<div class="col numero">{{(totales.subtotal | currency : "$" : 0) || "Por definir"}}</div>
+	</div>
+	<div class="row">
+		<div class="col">Domicilio:</div>
+		<div class="col numero">{{(totales.domicilio | currency : "$" : 0) || "Por definir"}}</div>
+	</div>
+	<div class="row" ng-if="totales.descuento">
+		<div class="col">Descuento:</div>
+		<div class="col numero">{{(totales.descuento | currency : "$" : 0) || "Por definir"}}</div>
+	</div>
+	<div class="row">
+		<div class="col">Valor Total:</div>
+		<div class="col numero">{{(totales.total | currency : "$" : 0) || "Por definir"}}</div>
+	</div>
+</div>

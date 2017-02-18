@@ -1,0 +1,21 @@
+<ion-view title="Cleansuit">
+  	<ion-content>
+
+  		<div class="tituloOrden">
+			ORDEN # {{carrito.infoOrden.codigo | numberFixedLen:4}}
+		</div>
+
+		<div class="subtituloOrden">
+			-AGREGAR PRODUCTOS-
+		</div>
+
+		<div ui-view="producto"></div>
+		
+		<elemento-centrado>
+			<button class="bottom button button-calm" ng-click="regresarCatalogo()">
+				Regresar al Catálogo de Productos
+			</button>
+		</elemento-centrado>
+  	</ion-content>
+
+</ion-view>

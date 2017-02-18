@@ -1,0 +1,132 @@
+<ion-view title="Cleansuit">
+	<ion-content class="pdBoton orden serviadd">
+
+		<div class="titulo">
+			ORDEN # {{carrito.infoOrden.codigo | numberFixedLen:4}}
+		</div>
+
+		<form name="formServicio" class="prenda">
+			<div class="subtitulo">
+				-AGREGAR PRENDA-
+			</div>
+			<ion-list>
+				<ion-item class="row fotos">
+					<div class="col fotos">
+						<h3>Fotos de la prenda</h3>
+						<ul class="listfotos">
+							<li ng-repeat="foto in prenda.fotos track by $index" ng-click="eliminarFoto($index)">
+								<img ng-src="{{foto.src}}" alt="">
+								<i class="icon icons icons-eliminar_foto" ></i>
+							</li>
+							<li ng-click="tomarFoto()">
+								<i class="icon icons icons-subir_foto"></i>
+							</li>
+						</ul>
+					</div>
+				</ion-item>
+			</ion-list>
+
+			<ion-list>
+				<ion-item class="row">
+					<div class="col item-icon-right">
+						<label class="item-input item-stacked-label item-floating-label">
+							<span class="input-label item-icon-right">Código de identificación de la prenda</span>
+							<input type="text" placeholder="Ingrese un código" ng-model="prenda.codigo" ng-minlength="3" ng-maxlength="100" ng-disabled="!esNueva" required>
+						</label>
+						<i class="icon icons-activar_cam" ng-click="escanearCodigo()" ng-hide="!esNueva"></i>
+					</div>
+				</ion-item>
+
+				<h3>Características de la prenda</h3>
+				<ion-item class="row">
+					<div class="col item-icon-right">
+						<label class="item-input item-stacked-label item-floating-label">
+							<span class="input-label item-icon-right tipServicio">Tipo de servicio</span>
+						</label>
+						<select ng-options="s as s.nombre for s in servicios track by s._id" ng-model="prenda.servicio" ng-change="cargarSubservicios()" required ></select>
+						<i class="icon ico-flechaabajo"></i>
+					</div>
+				</ion-item>
+
+				<ion-item class="row">
+					<div class="col item-icon-right">
+						<label class="item-input item-stacked-label item-floating-label">
+							<span class="input-label item-icon-right categoria">Categoría</span>
+						</label>
+						<select ng-options="s as s.nombre for s in prenda.servicio.subservicios track by s._id" ng-model="prenda.subservicio" required></select>
+						
+						<i class="icon ico-flechaabajo"></i>
+					</div>
+				</ion-item>
+
+				<ion-item class="row" ng-repeat="(_id, adicional) in prenda.subservicio.adicionales" ng-if="adicional.checked">
+					<div class="col">
+						<div class="checkbox">
+							<input type="checkbox" ng-model="prenda.adicionales[_id].checked" ng-checked="prenda.adicionales[_id].checked">
+							<span class="input-label item-icon-right">{{ServiciosFactory.getNombreSubservicio(_id)}}</span>
+						</div>
+					</div>
+				</ion-item>
+
+				<ion-item class="row">
+					<div class="col item-icon-right">
+						<label class="item-input item-stacked-label item-floating-label">
+							<span class="input-label item-icon-right">Marca</span>
+							<input type="text" placeholder="Marca" ng-model="prenda.marca" ng-minlength="1" ng-maxlength="100">
+						</label>
+						<i class="icon ico-flechaabajo"></i>
+					</div>
+				</ion-item>
+
+				<ion-item class="row">
+					<div class="col item-icon-right">
+						<label class="item-input item-stacked-label item-floating-label">
+							<span class="input-label item-icon-right">Talla</span>
+							<input type="text" placeholder="Talla" ng-model="prenda.talla" ng-minlength="1" ng-maxlength="100">
+						</label>
+						<i class="icon ico-flechaabajo" ng-click="openPopover('HORARECOLECCION', $event)"></i>
+					</div>
+				</ion-item>
+
+				<ion-item class="row">
+					<div class="col item-icon-right">
+						<label class="item-input item-stacked-label item-floating-label">
+							<span class="input-label item-icon-right">Material</span>
+							<input type="text" placeholder="Material" ng-model="prenda.material" ng-minlength="1" ng-maxlength="100">
+						</label>
+						<i class="icon ico-flechaabajo" ng-click="openPopover('HORARECOLECCION', $event)"></i>
+					</div>
+				</ion-item>
+
+				<ion-item class="row">
+					<div class="col item-icon-right">
+						<label class="item-input item-stacked-label item-floating-label">
+							<span class="input-label item-icon-right">Prenses</span>
+							<input type="text" placeholder="Prenses" ng-model="prenda.prenses" ng-minlength="1" ng-maxlength="100">
+						</label>
+						<i class="icon ico-flechaabajo" ng-click="openPopover('HORARECOLECCION', $event)"></i>
+					</div>
+				</ion-item>
+
+				<ion-item class="row textarea">
+					<div class="col">
+						<label class="item-input item-stacked-label item-floating-label">
+							<span class="input-label item-icon-right">Comentario</span>
+							<textarea placeholder="Comentario" ng-model="prenda.comentario" ng-minlength="0" ng-maxlength="100"></textarea>
+						</label>
+					</div>
+				</ion-item>
+
+			</ion-list>
+		</form>
+
+		<elemento-centrado>
+			<a ng-click="cancelar()" class="cancelar">{{formulario.cancelar.texto}}</a>
+		</elemento-centrado>
+	</ion-content>
+
+	<div class="bar bar-footer">
+		<a ng-click="siguiente()" class="button button-calm button-full" ng-disabled="!formulario.valido">{{formulario.siguiente.texto}}</a>
+	</div>
+
+</ion-view>

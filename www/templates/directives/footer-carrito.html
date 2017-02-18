@@ -1,0 +1,15 @@
+<div class="bar bar-footer" ng-if="carrito.contProductos + carrito.contServicios > 0 || carrito.servicioDirecto"> 
+  	<div class="row carrito" ui-sref="app.carrito">
+	    <div class="col col-80 text-left col-center suma" 
+	    	ng-if="carrito.contProductos + carrito.contServicios > 0">
+	      	Tu orden suma <span>{{carrito.totales.subtotal | currency : "$" : 0}}</span>
+	    </div>
+	    <div class="col col-80 text-left col-center suma" 
+	    	ng-if="carrito.contProductos + carrito.contServicios == 0 && carrito.servicioDirecto">
+	      	Continua...
+	    </div>
+	    <div class="col col-20 text-center icono">
+	    	<a class="button button-icon icon ico-carrito"></a>
+	    </div>
+	</div>  
+</div>

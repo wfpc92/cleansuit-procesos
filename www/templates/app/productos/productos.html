@@ -1,0 +1,40 @@
+<div class="card" ng-show="!hayProductos()">
+	<div class="item item-text-wrap">
+		<a ng-click="cargarProductos()">Cargar</a> lista de productos.
+	</div>
+</div>
+
+<ion-list id="{{idLst}}" ng-if="hayProductos()" can-swipe="true">
+	<div class="productos lista">
+		<ion-item class="item-thumbnail-left item-icon-right item-text-wrap" ng-repeat="producto in productos track by $index" ng-click="verDetalle($index)">
+
+			<div class="imagen">
+			<!--{{producto.foto_url}}-->
+				<img ng-src="{{producto.url_imagen}}" class="badge-container" ng-cloack/>
+				<span ng-if="carrito.cantidad(producto._id) > 0" class="badge badge-dark icon-badge">
+					{{carrito.cantidad(producto._id)}}
+				</span>
+			</div>
+
+			<h2>{{producto.nombre}}</h2>
+			<p>{{producto.desc_corta}}</p>
+			<h3>{{producto.precio | currency : "$ " : 0}}</h3>
+			<i class="icon ico-flechader assertive"></i>
+
+			<ion-option-button class="light text-center mas" ng-click="carrito.aumentarProducto(producto)">
+				<i class="icon ico-mas"></i>
+			</ion-option-button>
+
+			<ion-option-button class="light">
+				<div class="col text-center col-center">
+				  {{carrito.cantidad(producto._id)}}
+				</div>
+			</ion-option-button>
+
+			<ion-option-button class="light text-center menos" ng-click="carrito.disminuirProducto(producto)">
+				<i class="icon ico-menos"></i>
+			</ion-option-button>
+		</ion-item>
+	</div>
+</ion-list>
+

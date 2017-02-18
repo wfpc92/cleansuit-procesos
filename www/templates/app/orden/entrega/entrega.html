@@ -1,0 +1,32 @@
+<ion-view title="CleanSuit">
+	<ion-content class="ord-en-proceso recoleccion padding">
+
+		<menu-tabs historial="historial"></menu-tabs>
+
+		<div class="titulo">
+			<h3>Ordenes para entrega</h3>
+			<p>Este es el listado de ordenes para entregar</p>
+		</div>
+
+		<div clas="card" ng-show="!hayOrdenes()">
+            <div class="item item-text-wrap">
+                No tienes ordenes para recolectar.
+            </div>
+        </div>
+		
+		<ion-refresher on-refresh="refrescar()"></ion-refresher>
+		
+		<ion-list ng-if="hayOrdenes()">
+			<ion-item class="item-icon-right orden" ng-repeat="(index, infoOrden) in ordenes | orderBy:'orden.entrega.fecha':false track by $index" 
+					ng-click="verInformacionOrden(infoOrden)">
+
+				<!--<h3>orden {{$index}}</h3>-->
+				<h3>{{infoOrden.orden.recoleccion.direccion}}</h3>
+				<h4>{{infoOrden.cliente_id.nombre}}</h4>
+				<span>orden # {{infoOrden.codigo | numberFixedLen:4}}<span>
+				<i class="icon ico-flechader assertive"></i>
+
+			</ion-item>
+		</ion-list>		
+	</ion-content>
+</ion-view>

@@ -1,0 +1,15 @@
+<div class="fab-menu-overlay" ng-class="{active: fabMenu.active}" ng-click="fabMenuToggle()"></div>
+
+<div class="fab-menu fab-menu-right" ng-class="{active: fabMenu.active}">
+    <button id="btnFlotante" class="button button-fab fab-menu-button button-energized-900 icon icon icons icons-desplegar"
+            ng-click="fabMenuToggle()"></button>
+    <ul class="fab-menu-items">
+        <li>
+            <button class="button button-fab fab-menu-button-item icon icons icons-servicios" ui-sref="app.recoleccion-formulario-prenda"></button>
+        </li>
+        <li>
+            <button class="button button-fab fab-menu-button-item icon icons icons-productos" ui-sref="app.recoleccion-productos"></button>
+        </li>
+
+    </ul>
+</div>

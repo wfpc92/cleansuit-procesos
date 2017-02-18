@@ -1,0 +1,35 @@
+img.logoinicio {
+	margin: 10px auto 30px;
+}
+img.logoinicio {
+	margin: 30px auto 30px;
+}
+.tex-center h2 {
+	font-size: 1.7em;
+	padding: 0 30px;
+}
+#id-modal-mapa .bar .title.title-left {
+	font-size: 1em;
+}
+
+img.mano-tutorial {
+	width: 58px;
+	height: 41px;
+}
+
+img.nube-tutorial {
+	width: 249px;
+	height: 169px;
+}
+
+@-webkit-keyframes transicionSwipeDerecha {
+    to {
+        -webkit-transform: translateX(-80px);
+    }
+}
+
+@-webkit-keyframes transicionSwipeIzquierda {
+    to {
+        -webkit-transform: translateX(-80px);
+    }
+}
