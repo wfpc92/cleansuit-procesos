@@ -12,7 +12,7 @@
 						</div>
 					</ion-item>
 				</div>
-				
+
 				<ion-item class="row contenedor">
 					<div class="col item-icon-right">
 						<label class="item-input item-stacked-label item-floating-label">
@@ -35,6 +35,14 @@
 				</ion-item>
 
 				
+				<ion-item class="row novedad" ng-if="formulario.mostrarErrorPrenda && formulario.codigo">
+					<div clas="card" ng-if="!prenda.novedades">
+						<div class="item item-text-wrap">
+							No hay resultados para el código {{formulario.codigo}}
+						</div>
+					</div>
+				</ion-item>
+
 				<ion-item class="row novedad" ng-if="prenda">
 					<div class="col">
 						<ion-radio ng-repeat="item in radioNovedades" ng-value="item.valor" ng-model="novedad.hayNovedad">

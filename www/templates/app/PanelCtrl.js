@@ -52,9 +52,11 @@ var PanelCtrl = function($scope,
 		PrendaFactory
 		.buscarPrenda($scope.formulario.codigo)
 		.then(function(prenda) {
-			console.log(prenda)
 			if (prenda) {
 				$scope.prenda = prenda;
+				$scope.formulario.mostrarErrorPrenda = false;
+			} else {
+				$scope.formulario.mostrarErrorPrenda = true;
 			}
 		});
 	};
