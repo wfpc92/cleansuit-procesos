@@ -1,6 +1,7 @@
 var PanelCtrl = function($scope, 
 						PrendaFactory,
 						FotosFactory,
+						API_ENDPOINT,
 						$ionicPopup,
 						$state, 
 						$log,
@@ -24,9 +25,18 @@ var PanelCtrl = function($scope,
 
 	$scope.novedad = {};
 
+	$scope.$watch("novedad.proceso",function(o, n) {
+		console.log(o,n);
+		if(o) {
+			$scope.formulario.valido = true;
+		} else {
+			$scope.formulario.valido = false;
+		}
+	});
+
 	$scope.buscarPrenda = function() {
 		$scope.prenda = null;
-		
+
 		PrendaFactory
 		.buscarPrenda($scope.formulario.codigo)
 		.then(function(prenda) {
@@ -66,6 +76,39 @@ var PanelCtrl = function($scope,
 	    });
 	};
 
+	$scope.enviarNovedad = function() {
+		$ionicPopup
+		.confirm({
+	    	title: '¿Desea enviar el reporte de esta prenda '+($scope.novedad.hayNovedad ? 'Con':'Sin')+' Novedad?',
+	    	template: '',
+	    	buttons: [
+		      	{
+			    	text: 'No enviar',
+			    	type: 'button-calm'
+		      	},
+		    	{
+		    		text: 'Enviar',
+		    		type: 'button-calm',
+		    		onTap: function(e) {
+		    			PrendaFactory
+						.enviarNovedad($scope.prenda, $scope.novedad)
+						.then(function() {
+							$scope.formulario.codigo = null;
+						});
+		    		}
+		    	}
+		    ]
+	    });
+	};
+
+	$scope.getSrcFoto = function() {
+		if (API_ENDPOINT.url == '/api') {
+			src = "http://localhost:20987";
+		} else {
+			src = API_ENDPOINT.url
+		}
+		return src += "/updates/"+ $scope.prenda.fotos[0].nombre;
+	};
 };
 
 app.controller('PanelCtrl', PanelCtrl);
