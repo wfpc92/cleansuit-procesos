@@ -2058,6 +2058,24 @@ html input[disabled] {
 		}
 		.contenedor {
 			background-color: #3DA0EB;
+			padding-top: 10px;
+			padding-bottom: 11px;
+			span {
+				display: none !important;
+			}
+			input {
+				border: 1px solid #52B1ED;
+				border-radius: 10px;
+				height: 48px;
+				padding: 0 15px;
+				color: #666666 !important;
+				font-size: 16px;
+			}
+			.icon.icons-activar_cam {
+				top: 29px;
+				right: 35px;
+				height: 32px !important;
+			} 
 			.prenda {
 				position: relative;
 				padding: 19px 15px 10px 125px;
@@ -2093,16 +2111,23 @@ html input[disabled] {
 			}
 		}
 		.textarea {
+			padding: 5px 20px;
 			span {
 				display: none !important;
 			}
-			.item-input textarea {
+			textarea {
+				width: 100%;
 				border: 1px solid #CCCCCC;
 				border-radius: 10px;
 				font-size: 1em;
 				color: #666 !important;
 				padding: 16px;
-				overflow:hidden
+				overflow:hidden;
+				height: 100px;
+				opacity: 1!important;
+				font-family: fira_sansregular;
+				resize: none;
+				line-height: 20px;
 			}
 		}
 		.button.button-positive {
@@ -2112,7 +2137,7 @@ html input[disabled] {
 			margin: 5px auto 10px;
 			font-family: 'fira_sansmedium';
 			font-size: 20px;
-			line-height: 49px;
+			line-height: 49px;  
 		}
 	}
 }
