@@ -17,11 +17,11 @@ app
 })
 
 .constant('USER_ROLES', {
-	domiciliario: 'domiciliario',
+	procesos: 'procesos',
 	public: 'public'
 })
 
 .constant('API_ENDPOINT', {
-	url: '/api'
-	//url: 'http://api.cleansuit.co'
+	//url: '/api'
+	url: 'http://api.cleansuit.co'
 });

@@ -3,24 +3,16 @@ var AppCtrl = function($scope,
 					$state,
 					$ionicHistory, 
 					$log,
-					HistorialTabsFactory,
 					UsuarioFactory,
-					ControlDescargasFactory,
-					CarritoFactory,
-					OrdenesFactory,
-					PopupFactory,
 					AuthService,
-					FormularioFactory,
+					PopupFactory,
 					AUTH_EVENTS,
 					APP_EVENTS,
 					USER_ROLES) {
 
 	$log.debug("AppCtrl", $scope.$id);
 
-	$scope.historial = HistorialTabsFactory;
-	$scope.carrito = CarritoFactory;
 	$scope.$state = $state;
-	$scope.formulario = FormularioFactory;
 	
 	//verificar si esta autenticado y autorizado.
 	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
@@ -55,11 +47,6 @@ var AppCtrl = function($scope,
 	
 	$scope.$on(AUTH_EVENTS.loginSuccess, function(event, args){
 		$scope.usuario = UsuarioFactory.getUsuario();
-		ControlDescargasFactory
-		.cargaInicial()
-		.finally(function() {
-			$log.debug("Carga inicial finalizada.");
-		});
 		$state.go('app.panel');
 	});
 
@@ -114,31 +101,9 @@ var AppCtrl = function($scope,
 		});
 	});
 
-	$scope.irUltimoEstado = function() {
-		if($state.current.name != $scope.historial.ultimoEstado) {
-			$ionicHistory.nextViewOptions({
-				disableBack:'true'
-			});
-			$state.go($scope.historial.ultimoEstado);
-		}
-	};
-
-	$scope.irVentaDirecta = function() {
-		var estadoVentaProductos = 'app.venta-productos';
-
-		if($state.current.name != estadoVentaProductos) {
-			$scope.carrito.vaciar();
-			$ionicHistory.nextViewOptions({
-				disableBack:'true'
-			});
-			$state.go(estadoVentaProductos);	
-		}		
-	};
-
 	$scope.logout = function() {
 		$log.debug("AppCtrl.logout():");	
 		AuthService.logout();
-		CarritoFactory.vaciar();
 		$rootScope.$broadcast("limpiarLista");
 		$state.go('autenticacion.ingresar');
 	};
