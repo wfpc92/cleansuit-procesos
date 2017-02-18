@@ -1,25 +1,25 @@
 {
-  "name": "cleansuit-procesos",
-  "app_id": "",
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://api.cleansuit.co"
-    }
-  ],
-  "gulpStartupTasks": [
-    "sass",
-    "watch"
-  ],
-  "watchPatterns": [
-    "www/**/*",
-    "!www/lib/**/*"
-  ],
-  "browsers": [
-    {
-      "platform": "android",
-      "browser": "crosswalk-lite",
-      "version": "12.41.296.5"
-    }
-  ]
+	"name": "cleansuit-procesos",
+	"app_id": "",
+	"proxies": [
+		{
+			"path": "/api",
+			"proxyUrl": "http://api.cleansuit.co"
+		}
+	],
+	"gulpStartupTasks": [
+		"sass",
+		"watch"
+	],
+	"watchPatterns": [
+		"www/**/*",
+		"!www/lib/**/*"
+	],
+	"browsers": [
+		{
+			"platform": "android",
+			"browser": "crosswalk-lite",
+			"version": "12.41.296.5"
+		}
+	]
 }
