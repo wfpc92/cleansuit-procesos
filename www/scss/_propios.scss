@@ -1942,9 +1942,10 @@ html input[disabled] {
 	right: 85px;
 }
 
-.button.button-icon.button-clear.icons-generar_orden:before {
-	font-size: 30px;
-	line-height: 45px;
+.button.button-icon.button-clear.ico-cerrar:before {
+	font-size: 23px;
+	line-height: 46px;
+	margin-right: 6px;
 }
 
 .historial-prenda{
@@ -1977,6 +1978,7 @@ html input[disabled] {
 				font-family: 'fira_sansregular';
 				font-size: 1em;
 				margin: 0;
+				color: #666666; 
 			}
 			div.estado {
 				position: absolute;
@@ -1991,7 +1993,13 @@ html input[disabled] {
 					left: 50%;
 					margin-left: -24px;
 				}
-			}			
+			}
+			p.novedad {
+				border: 1px solid #CCCCCC;
+				border-radius: 10px;
+				padding: 15px;
+				margin: 11px 0 0;
+			}		
 		}
 		li.afirmativo {
 			h2 {
@@ -2008,12 +2016,7 @@ html input[disabled] {
 			div.estado {
 				background-color: #E70000;
 			}
-			p.novedad {
-				border: 1px solid #CCCCCC;
-				border-radius: 10px;
-				padding: 15px;
-				margin: 11px 0 0;
-			}
+			
 		}
 	}
 }

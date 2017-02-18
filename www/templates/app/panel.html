@@ -68,12 +68,12 @@
 			</div>
 
 			<ul class="listProcesos">
-				<li ng-repeat="novedad in prenda.novedades" ng-class="{'afirmativo': novedad.hayNovedad,  'negativo': !novedad.hayNovedad}">
+				<li ng-repeat="novedad in prenda.novedades" ng-class="{'afirmativo': !novedad.hayNovedad,  'negativo': novedad.hayNovedad}">
 					<h2>{{novedad.proceso.nombre}}</h2>
 					<span>Fecha: {{novedad.fecha | date : "hh:mm, dd 'de' MMMM 'de' yyyy"}}</span>
-					<div class="estado"><span class="icon iconoafirmativo"></span></div>
-					<p class="novedad">
-						novedad.observaciones
+					<div class="estado"><span class="icon" ng-class="{'iconoafirmativo': !novedad.hayNovedad,  'icononegativo': novedad.hayNovedad}"></span></div>
+					<p class="novedad" ng-if="novedad.observaciones">
+						{{novedad.observaciones}}
 					</p>
 				</li>
 			</ul>
