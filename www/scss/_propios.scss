@@ -1953,8 +1953,12 @@ html input[disabled] {
 		font-family:'fira_sansmedium';
 		font-size: 1.2em;
 		color: #666666;
-		padding-left: 25px;
+		padding-left: 20px;
 		margin: 44px 0 12px;
+	}
+	.item.item-text-wrap {
+		margin: 0 0 15px 0;
+		padding: 16px 16px 16px 20px;
 	}
 	ul {
 		li {
