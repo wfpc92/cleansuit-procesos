@@ -4,7 +4,7 @@
 	"proxies": [
 		{
 			"path": "/api",
-			"proxyUrl": "http://api.cleansuit.co"
+			"proxyUrl": "http://localhost:20987/"
 		}
 	],
 	"gulpStartupTasks": [
