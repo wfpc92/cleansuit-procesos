@@ -4,8 +4,10 @@ var PrendaFactory = function(RecursosFactory,
 	
 	var _prenda = null;
 
+	$localStorage.proceso = $localStorage.proceso || {};
+	
 	return {
-		productos : $localStorage.productos,
+		proceso : $localStorage.proceso,
 
 		//buscar la informacion de la prenda
 		buscarPrenda: function(codigo) {

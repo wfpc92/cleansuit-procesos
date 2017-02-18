@@ -10,6 +10,8 @@ var PanelCtrl = function($scope,
 	$log.debug("PanelCtrl", $scope.$id);
 	var self = this;
 
+	$scope.PrendaFactory = PrendaFactory;
+	
 	$scope.procesos = [
 		{_id:"1", nombre: "Proceso 1"},
 		{_id:"2", nombre: "Proceso 2"},

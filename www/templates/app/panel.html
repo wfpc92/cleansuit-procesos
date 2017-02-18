@@ -7,7 +7,7 @@
 				<div class="cont-lista">
 					<ion-item class="row listProcesos">
 						<div class="col item-icon-right">
-							<select ng-options="p as p.nombre for p in procesos track by p._id" ng-model="novedad.proceso" required ></select>
+							<select ng-options="p as p.nombre for p in procesos track by p._id" ng-model="PrendaFactory.proceso" required ></select>
 							<i class="icon ico-flechaabajo"></i>
 						</div>
 					</ion-item>
@@ -61,7 +61,7 @@
 		<div class="historial-prenda" ng-if="prenda">
 			<h3>Historial de prenda</h3>
 			
-			<div clas="card" ng-if="prenda.novedades.length == 0">
+			<div clas="card" ng-if="!prenda.novedades">
 				<div class="item item-text-wrap">
 					No hay Novedades
 				</div>
@@ -70,7 +70,7 @@
 			<ul class="listProcesos">
 				<li ng-repeat="novedad in prenda.novedades" ng-class="{'afirmativo': !novedad.hayNovedad,  'negativo': novedad.hayNovedad}">
 					<h2>{{novedad.proceso.nombre}}</h2>
-					<span>Fecha: {{novedad.fecha | date : "hh:mm, dd 'de' MMMM 'de' yyyy"}}</span>
+					<span>{{novedad.fecha | date : "dd 'de' MMMM 'de' yyyy, hh:mm a"}}</span>
 					<div class="estado"><span class="icon" ng-class="{'iconoafirmativo': !novedad.hayNovedad,  'icononegativo': novedad.hayNovedad}"></span></div>
 					<p class="novedad" ng-if="novedad.observaciones">
 						{{novedad.observaciones}}
