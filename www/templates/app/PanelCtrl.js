@@ -10,12 +10,6 @@ var PanelCtrl = function($scope,
 	$log.debug("PanelCtrl", $scope.$id);
 	var self = this;
 
-	$scope.formulario = {
-		codigo: null
-	};
-
-	$scope.prenda = null;
-
 	$scope.procesos = [
 		{_id:"1", nombre: "Proceso 1"},
 		{_id:"2", nombre: "Proceso 2"},
@@ -23,13 +17,29 @@ var PanelCtrl = function($scope,
 		{_id:"4", nombre: "Proceso 4"},
 	];
 
-
 	$scope.radioNovedades = [
 		{ valor: true, texto:  "Sin novedad" },
 		{ valor: false, texto:  "Con novedad" }
 	];
 
-	$scope.novedad = {};
+	var init = function() {
+		$scope.prenda = null;
+		$scope.formulario = {
+			codigo: null
+		};
+		$scope.novedad = {
+			hayNovedad: $scope.radioNovedades[0].valor
+		};
+	};
+
+	var limpiarFormulario = function() {
+		$scope.prenda = null;
+		$scope.novedad = {
+			hayNovedad: $scope.radioNovedades[0].valor
+		};
+	};
+
+	init();
 
 
 	$scope.$watch("novedad.proceso",function(o, n) {
@@ -42,7 +52,7 @@ var PanelCtrl = function($scope,
 	});
 
 	$scope.buscarPrenda = function() {
-		$scope.prenda = null;
+		limpiarFormulario();
 
 		PrendaFactory
 		.buscarPrenda($scope.formulario.codigo)
@@ -100,7 +110,6 @@ var PanelCtrl = function($scope,
 		    			PrendaFactory
 						.enviarNovedad($scope.prenda, $scope.novedad)
 						.then(function() {
-							
 							limpiarFormulario();
 						});
 		    		}
@@ -108,11 +117,6 @@ var PanelCtrl = function($scope,
 		    ]
 	    });
 	};
-
-	var limpiarFormulario = function() {
-		$scope.formulario.codigo = null;
-		//hayNovedad: $scope.radioNovedades[0].valor
-	}
 
 	$scope.getSrcFoto = function() {
 		if (API_ENDPOINT.url == '/api') {
