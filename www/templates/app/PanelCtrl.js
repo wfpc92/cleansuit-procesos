@@ -41,7 +41,6 @@ var PanelCtrl = function($scope,
 
 	init();
 
-
 	$scope.$watch("novedad.proceso",function(o, n) {
 		console.log(o,n);
 		if(o) {

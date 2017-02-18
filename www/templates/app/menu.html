@@ -3,77 +3,17 @@
 	<ion-side-menu-content edge-drag-threshold="true" drag-content="false">
 
 		<ion-nav-bar class="bar-positive">
-			<ion-nav-back-button></ion-nav-back-button>
-			<ion-nav-buttons side="left">
-				<button menu-toggle="left" class="button button-icon button-clear ico-menu" >
-				</button>
-			</ion-nav-buttons>
 			<ion-nav-buttons side="right">
-				<button ng-if="$state.current.name == 'app.recoleccion-carrito'" ng-disabled="carrito.contProductos + carrito.contPrendas == 0" class="button button-icon button-clear ico-cerrar" ui-sref="app.recoleccion-confirmacion"></button>
+				<button class="button button-icon button-clear ico-cerrar" ng-click="logout()"></button>
 			</ion-nav-buttons>
-
 		</ion-nav-bar>
 
 		<ion-tabs class="tabs-light">
-			<ion-tab title="Menu" ui-sref="app.recoleccion" class="tab-hidden">
-				<ion-nav-view name="contenedor-menu"></ion-nav-view>
-			</ion-tab>
 			<ion-tab title="Recolección" ui-sref="app.panel" class="aIni tab-hidden" >
 				<ion-nav-view name="contenedor-panel"></ion-nav-view>
-			</ion-tab>
-			<ion-tab title="Entrega" ui-sref="app.entrega" class="aFin tab-hidden">
-				<ion-nav-view name="contenedor-entrega"></ion-nav-view>
 			</ion-tab>
 		</ion-tabs>
 
 	</ion-side-menu-content>
 
-
-	<ion-side-menu side="left">
-		<ion-content overflow-scroll="true" padding="false" scroll="true" class="menu">
-			<ion-list>
-
-				<ion-item class="item-avatar item-text-wrap">
-					<div class="imagen">
-						<img ng-src="{{usuario.url_foto || 'img/perfil.png'}}">
-					</div>
-					<div class="nombre">
-						<h2>
-							{{usuario.nombre | uppercase}}
-						</h2>
-					</div>
-				</ion-item>
-
-				<ion-item menu-close ng-click="irUltimoEstado()" class="cerrar item-icon-left">
-					Inicio
-					<i class="icon ico-home"></i>
-				</ion-item>
-
-				<ion-item menu-close ui-sref="app.recolectadas" class="item-icon-left">
-					Órdenes recogidas
-					<i class="icon icons icons-ord_recogidas"></i>
-				</ion-item>
-
-				<ion-item menu-close ui-sref="app.entregadas" class="item-icon-left">
-					Órdenes entregadas
-					<i class="icon icons icons-ord_entregadas"></i>
-				</ion-item>
-
-				<ion-item menu-close ng-click="irVentaDirecta()" class="cerrar item-icon-left">
-					Venta directa de producto
-					<i class="icon icons icons-venta_directa"></i>
-				</ion-item>
-
-				<ion-item menu-close ui-sref="app.acerca" class="item-icon-left">
-					Datos de CleanSuit
-					<i class="icon ico-about"></i>
-				</ion-item>
-
-				<ion-item menu-close ng-click="logout()" class="item-icon-left cerrar">
-					Cerrar sesión
-					<i class="icon ico-cerrar"></i>
-				</ion-item>
-			</ion-list>
-		</ion-content>
-	</ion-side-menu>
 </ion-side-menus>
