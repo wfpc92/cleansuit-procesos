@@ -1,5 +1,5 @@
 var PanelCtrl = function($scope, 
-						OrdenesFactory,
+						PrendaFactory,
 						$state, 
 						$log,
 						$ionicHistory) {
@@ -10,7 +10,13 @@ var PanelCtrl = function($scope,
 	$scope.prenda = {};
 
 	$scope.buscarPrenda = function() {
-		
+		PrendaFactory
+		.buscarPrenda($scope.prenda.codigo)
+		.then(function(prenda) {
+			if (prenda) {
+				$scope.prenda = prenda;
+			}
+		});
 	};
 
 };
