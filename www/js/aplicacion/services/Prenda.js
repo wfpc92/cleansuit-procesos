@@ -24,7 +24,7 @@ var PrendaFactory = function(RecursosFactory,
 		enviarNovedad:function(prenda, novedad) {
 			console.log(prenda, novedad);
 			return RecursosFactory
-			.post('/prendas/novedad', {})
+			.post('/prendas/novedad', {prenda: prenda, novedad: novedad})
 			.then(function(respuesta) {
 				$log.debug("PrendaFactory.enviarNovedad()", respuesta);
 				if(respuesta){
