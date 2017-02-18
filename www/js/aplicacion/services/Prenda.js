@@ -37,7 +37,7 @@ var PrendaFactory = function(RecursosFactory,
 		//enviar novedad de la prenda
 		enviarNovedad:function(prenda, novedad) {
 			novedad.proceso = $localStorage.proceso;
-			
+			console.log(prenda, novedad)
 			return RecursosFactory
 			.post('/prendas/novedad', {prenda: prenda, novedad: novedad})
 			.then(function(respuesta) {

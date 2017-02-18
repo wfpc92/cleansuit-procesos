@@ -13,8 +13,8 @@ var PanelCtrl = function($scope,
 	$scope.PrendaFactory = PrendaFactory;
 	
 	$scope.radioNovedades = [
-		{ valor: true, texto:  "Sin novedad" },
-		{ valor: false, texto:  "Con novedad" }
+		{ valor: false, texto:  "Sin novedad" },
+		{ valor: true, texto:  "Con novedad" }
 	];
 
 	var init = function() {
@@ -30,19 +30,22 @@ var PanelCtrl = function($scope,
 	var limpiarFormulario = function() {
 		$scope.prenda = null;
 		$scope.novedad = {
-			hayNovedad: $scope.radioNovedades[0].valor,
+			hayNovedad: $scope.radioNovedades[0].valor
 		};
+	};
+
+	var mostrarErrorCamara = function(err) {
+		$ionicPopup
+		.alert({
+	    	title: 'Camara no disponible',
+	    	template: 'El dispositivo no permite acceso a la camara. Reportar este inconveniente con el administrador. '+err
+	    });
 	};
 
 	init();
 
 	$scope.$watch("PrendaFactory.proceso",function(o, n) {
 		console.log(o,n);
-		if(o) {
-			$scope.formulario.valido = true;
-		} else {
-			$scope.formulario.valido = false;
-		}
 		PrendaFactory.guardarProceso(o);
 	});
 
@@ -82,14 +85,7 @@ var PanelCtrl = function($scope,
 		});
 	};
 
-	var mostrarErrorCamara = function(err) {
-		$ionicPopup
-		.alert({
-	    	title: 'Camara no disponible',
-	    	template: 'El dispositivo no permite acceso a la camara. Reportar este inconveniente con el administrador. '+err
-	    });
-	};
-
+	
 	$scope.enviarNovedad = function() {
 		$ionicPopup
 		.confirm({
@@ -107,7 +103,7 @@ var PanelCtrl = function($scope,
 		    			PrendaFactory
 						.enviarNovedad($scope.prenda, $scope.novedad)
 						.then(function() {
-							limpiarFormulario();
+							init();
 						});
 		    		}
 		    	}
