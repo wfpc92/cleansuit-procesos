@@ -3,12 +3,24 @@ var PrendaFactory = function(RecursosFactory,
 							$log){
 	
 	var _prenda = null;
-
-	$localStorage.proceso = $localStorage.proceso || {};
 	
+	var _procesos = [
+		{_id:"1", nombre: "Proceso 1"},
+		{_id:"2", nombre: "Proceso 2"},
+		{_id:"3", nombre: "Proceso 3"},
+		{_id:"4", nombre: "Proceso 4"},
+	];
+
+	$localStorage.proceso = $localStorage.proceso || _procesos[0];
+
 	return {
 		proceso : $localStorage.proceso,
 
+		procesos: _procesos,
+
+		guardarProceso: function(o) {
+			$localStorage.proceso = o;
+		},
 		//buscar la informacion de la prenda
 		buscarPrenda: function(codigo) {
 			return RecursosFactory
@@ -24,7 +36,8 @@ var PrendaFactory = function(RecursosFactory,
 
 		//enviar novedad de la prenda
 		enviarNovedad:function(prenda, novedad) {
-			console.log(prenda, novedad);
+			novedad.proceso = $localStorage.proceso;
+			
 			return RecursosFactory
 			.post('/prendas/novedad', {prenda: prenda, novedad: novedad})
 			.then(function(respuesta) {

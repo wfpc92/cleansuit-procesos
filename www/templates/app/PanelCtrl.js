@@ -12,13 +12,6 @@ var PanelCtrl = function($scope,
 
 	$scope.PrendaFactory = PrendaFactory;
 	
-	$scope.procesos = [
-		{_id:"1", nombre: "Proceso 1"},
-		{_id:"2", nombre: "Proceso 2"},
-		{_id:"3", nombre: "Proceso 3"},
-		{_id:"4", nombre: "Proceso 4"},
-	];
-
 	$scope.radioNovedades = [
 		{ valor: true, texto:  "Sin novedad" },
 		{ valor: false, texto:  "Con novedad" }
@@ -30,26 +23,27 @@ var PanelCtrl = function($scope,
 			codigo: null
 		};
 		$scope.novedad = {
-			hayNovedad: $scope.radioNovedades[0].valor
+			hayNovedad: $scope.radioNovedades[0].valor,
 		};
 	};
 
 	var limpiarFormulario = function() {
 		$scope.prenda = null;
 		$scope.novedad = {
-			hayNovedad: $scope.radioNovedades[0].valor
+			hayNovedad: $scope.radioNovedades[0].valor,
 		};
 	};
 
 	init();
 
-	$scope.$watch("novedad.proceso",function(o, n) {
+	$scope.$watch("PrendaFactory.proceso",function(o, n) {
 		console.log(o,n);
 		if(o) {
 			$scope.formulario.valido = true;
 		} else {
 			$scope.formulario.valido = false;
 		}
+		PrendaFactory.guardarProceso(o);
 	});
 
 	$scope.buscarPrenda = function() {
