@@ -17,7 +17,7 @@ app
 })
 
 .constant('USER_ROLES', {
-	procesos: 'procesos',
+	procesos: 'trabajador',
 	public: 'public'
 })
 

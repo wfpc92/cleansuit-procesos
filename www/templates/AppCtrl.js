@@ -18,19 +18,20 @@ var AppCtrl = function($scope,
 	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 		//$log.debug("event:$stateChangeStart", toState, toParams, fromState, fromParams)
 		var rolesAutorizados = toState.data.rolesAutorizados;
-		if (!AuthService.estaAutorizado(rolesAutorizados)) {
+		//console.log("$stateChangeStart")
+		if (!AuthService.estaAutorizado(rolesAutorizados)) {// usuario no autorizado
 			//$log.debug("no esta autorizado")
-			// usuario no autorizado
 			if (AuthService.estaAutenticado()) {
 				//$log.debug("esta autenticado")
 				event.preventDefault();
 				if(toState.name.indexOf("autenticacion.") !== -1){
 					// usuario quiere volver a autenticar?, no permitido
 					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-				} else {
-					//solicitud de estado desconocido
-					$state.go('autenticacion.ingresar');
+				} else {//solicitud de estado desconocido
+					$scope.logout();
+					//$log.debug("solicitud de estado desconocido")
 					$rootScope.$broadcast(AUTH_EVENTS.noAutorizado);
+					$state.go('autenticacion.ingresar');
 				}
 				
 			} else {
